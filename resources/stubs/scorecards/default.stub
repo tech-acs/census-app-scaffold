@@ -1,0 +1,10 @@
+<?php
+
+namespace DummyNamespace;
+
+use Uneca\Chimera\Http\Livewire\ScorecardComponent;
+
+class {{ class }} extends ScorecardComponent
+{
+    //
+}
