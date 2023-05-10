@@ -13,15 +13,22 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('map_indicators', function (Blueprint $table) {
+        Schema::create('questionnaires', function (Blueprint $table) {
             $table->id();
             $table->string('name')->unique();
-            $table->string('slug');
             $table->jsonb('title')->nullable();
-            $table->jsonb('description')->nullable();
-            $table->string('questionnaire')->nullable();
-            $table->boolean('published')->default(false);
+            $table->timestamp('start_date')->nullable();
+            $table->timestamp('end_date')->nullable();
+            $table->boolean('show_on_home_page')->default(false);
             $table->unsignedTinyInteger('rank')->nullable();
+
+            $table->string('driver', '25')->default('mysql');
+            $table->string('host');
+            $table->string('port', 10);
+            $table->string('database');
+            $table->string('username');
+            $table->string('password');
+            $table->boolean('connection_active')->default(true);
             $table->timestamps();
         });
     }
@@ -33,6 +40,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('map_indicators');
+        Schema::dropIfExists('questionnaires');
     }
 };

@@ -1,9 +1,0 @@
-<?php
-
-namespace DummyNamespace;
-
-use App\IndicatorTemplates\{{ parent_class }} as Template;
-
-class {{ class }} extends Template {
-
-}

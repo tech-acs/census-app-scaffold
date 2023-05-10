@@ -7,7 +7,7 @@ return [
         'url' => env('APP_OWNER_URL', '#'),
     ],
     'secure' => env('SECURE', false),
-    'indicators_per_page' => env('INDICATORS_PER_PAGE', 2),
+    //'indicators_per_page' => env('INDICATORS_PER_PAGE', 2),
     'records_per_page' => env('RECORDS_PER_PAGE', 20),
     'emailing_enabled' => env('EMAILING_ENABLED', false),
     'enforce_2fa' => env('ENFORCE_2FA', false),

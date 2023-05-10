@@ -29,26 +29,16 @@ class ChimeraServiceProvider extends PackageServiceProvider
             'install_postgis_extension',
             'install_ltree_extension',
             'create_area_restrictions_table',
-            'create_faqs_table',
             'create_invitations_table',
             'create_usage_stats_table',
             'create_areas_table',
-            'create_pages_table',
-            'create_questionnaires_table',
-            'create_indicators_table',
-            'create_indicator_page_table',
-            'create_scorecards_table',
-            'create_reports_table',
+            'create_sources_table',
             'add_is_suspended_column_to_users_table',
             'create_notifications_table',
             'create_announcements_table',
-            'create_reference_values_table',
             'create_area_hierarchies_table',
-            'create_map_indicators_table',
             'create_analytics_table',
-            'create_report_user_table',
             'add_case_stats_component_column_to_questionnaires_table',
-            'add_driver_column_to_questionnaires_table',
         ];
         $package
             ->name('chimera')
@@ -64,26 +54,14 @@ class ChimeraServiceProvider extends PackageServiceProvider
             ->hasRoute('web')
             ->hasMigrations($migrations)
             ->hasCommands([
-                \Uneca\Chimera\Commands\CacheIndicators::class,
-                \Uneca\Chimera\Commands\CacheScorecards::class,
-                \Uneca\Chimera\Commands\CacheCaseStats::class,
-                \Uneca\Chimera\Commands\CacheMapIndicators::class,
-                \Uneca\Chimera\Commands\CacheClear::class,
                 \Uneca\Chimera\Commands\Chimera::class,
                 \Uneca\Chimera\Commands\DataExport::class,
                 \Uneca\Chimera\Commands\DataImport::class,
                 \Uneca\Chimera\Commands\Dockerize::class,
                 \Uneca\Chimera\Commands\Adminify::class,
                 \Uneca\Chimera\Commands\Delete::class,
-                \Uneca\Chimera\Commands\DownloadIndicatorTemplates::class,
-                \Uneca\Chimera\Commands\GenerateReports::class,
-                \Uneca\Chimera\Commands\MakeIndicator::class,
-                \Uneca\Chimera\Commands\MakeMapIndicator::class,
-                \Uneca\Chimera\Commands\MakeReport::class,
-                \Uneca\Chimera\Commands\MakeScorecard::class,
                 \Uneca\Chimera\Commands\Update::class,
                 \Uneca\Chimera\Commands\Production::class,
-                \Uneca\Chimera\Commands\UpdateIndicators::class
             ]);
     }
 
@@ -139,9 +117,6 @@ class ChimeraServiceProvider extends PackageServiceProvider
                 });
         });
 
-        $pages = PageBuilder::pages();
-        View::share('pages', $pages);
-
         Fortify::registerView(function (Request $request) {
             if (! $request->hasValidSignature()) {
                 throw new InvalidSignatureException();
@@ -155,26 +130,11 @@ class ChimeraServiceProvider extends PackageServiceProvider
         $router->pushMiddlewareToGroup('web', \Uneca\Chimera\Http\Middleware\Language::class);
         $router->aliasMiddleware('enforce_2fa', \Uneca\Chimera\Http\Middleware\RedirectIf2FAEnforced::class);
         $router->aliasMiddleware('log_page_views', \Uneca\Chimera\Http\Middleware\LogPageView::class);
-
-        $this->app->booted(function () {
-            $schedule = $this->app->make(Schedule::class);
-            $schedule->command('chimera:generate-reports')->hourly();
-        });
-
-        if ($this->app->runningInConsole()) {
-            $this->publishes([
-                __DIR__ . '/../resources/stubs' => resource_path('stubs'),
-            ], 'chimera-stubs');
-        }
     }
 
     public function register()
     {
         parent::register();
-
-        /*$this->app->when(Chart::class)
-            ->needs(CachingInterface::class)
-            ->give(IndicatorCaching::class);*/
 
         $this->app->bind('helpers', function ($app) {
             return new Helpers();
