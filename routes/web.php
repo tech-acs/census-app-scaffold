@@ -38,7 +38,7 @@ Route::middleware(['web', 'auth:sanctum', 'verified', 'log_page_views', 'enforce
                 Route::delete('area/truncate', [AreaController::class, 'destroy'])->name('area.destroy');
             }
         });
-        
+
         Route::resource('announcement', AnnouncementController::class)->only(['index', 'create', 'store']);
         Route::get('usage_stats', UsageStatsController::class)->name('usage_stats');
     });
