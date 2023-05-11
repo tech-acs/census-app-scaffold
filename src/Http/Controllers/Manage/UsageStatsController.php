@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Uneca\Chimera\Models\UsageStat;
+use Uneca\Scaffold\Models\UsageStat;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Http\Request;
 
@@ -30,6 +30,6 @@ class UsageStatsController extends Controller
         } else {
             $records = UsageStat::with('user')->orderBy('created_at', 'DESC')->paginate(env('PAGE_SIZE', 20));
         }
-        return view('chimera::usage_stats.index', compact('records', 'filter'));
+        return view('scaffold::usage_stats.index', compact('records', 'filter'));
     }
 }

@@ -1,9 +1,9 @@
-<x-chimera::round-button title="{{ __('Notifications') }}"  class="inline-flex relative items-center">
+<x-scaffold::round-button title="{{ __('Notifications') }}"  class="inline-flex relative items-center">
     <div wire:poll.3000ms.visible>
         @if ($unreadCount > 0)
-            <x-chimera::icon.bell-unread />
+            <x-scaffold::icon.bell-unread />
         @else
-            <x-chimera::icon.bell />
+            <x-scaffold::icon.bell />
         @endif
     </div>
-</x-chimera::round-button>
+</x-scaffold::round-button>

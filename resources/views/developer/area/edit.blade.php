@@ -31,7 +31,7 @@
         <form action="{{route('developer.area.update', $area->id)}}" method="POST">
             @csrf
             @method('PATCH')
-            @include('chimera::developer.area.form')
+            @include('scaffold::developer.area.form')
         </form>
 
     </div>

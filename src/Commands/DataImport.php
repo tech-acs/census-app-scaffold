@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\DB;
@@ -8,7 +8,7 @@ use Symfony\Component\Process\Process;
 
 class DataImport extends Command
 {
-    protected $signature = 'chimera:data-import {--command} {--do-not-truncate}';
+    protected $signature = 'scaffold:data-import {--command} {--do-not-truncate}';
 
     protected $description = 'Restore postgres data (some tables) from file';
 

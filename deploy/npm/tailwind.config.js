@@ -5,11 +5,10 @@ module.exports = {
     content: [
         './vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php',
         './vendor/laravel/jetstream/**/*.blade.php',
-        './vendor/uneca/dashboard-starter-kit/**/*.blade.php',
-        './vendor/uneca/dashboard-starter-kit/src/Services/Theme.php',
+        './vendor/uneca/census-app-scaffold/**/*.blade.php',
+        './vendor/uneca/census-app-scaffold/src/Services/Theme.php',
         './storage/framework/views/*.php',
         './resources/views/**/*.blade.php',
-        './app/MapIndicators/**/*.php',
     ],
 
     theme: {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Notifications;
+namespace Uneca\Scaffold\Notifications;
 
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;

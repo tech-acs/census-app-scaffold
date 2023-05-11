@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
 use Illuminate\Notifications\DatabaseNotificationCollection;
 use Illuminate\Notifications\Notification;
@@ -28,6 +28,6 @@ class NotificationDropdown extends Component
         $user = auth()->user();
         $this->notifications = $user->notifications()->take(5)->get();
         $this->totalCount = $user->notifications->count();
-        return view('chimera::livewire.notification-dropdown');
+        return view('scaffold::livewire.notification-dropdown');
     }
 }

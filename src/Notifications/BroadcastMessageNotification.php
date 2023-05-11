@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Notifications;
+namespace Uneca\Scaffold\Notifications;
 
-use Uneca\Chimera\Models\Announcement;
+use Uneca\Scaffold\Models\Announcement;
 use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;

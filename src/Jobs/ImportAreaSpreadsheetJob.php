@@ -1,11 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Jobs;
+namespace Uneca\Scaffold\Jobs;
 
 use Illuminate\Bus\Batchable;
 use Illuminate\Support\Facades\Notification;
-use Uneca\Chimera\Models\Area;
-use Carbon\Carbon;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -16,7 +14,9 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Str;
 use Spatie\SimpleExcel\SimpleExcelReader;
-use Uneca\Chimera\Notifications\TaskFailedNotification;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Notifications\TaskFailedNotification;
+use Carbon\Carbon;
 
 class ImportAreaSpreadsheetJob implements ShouldQueue
 {

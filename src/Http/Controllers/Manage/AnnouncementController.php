@@ -1,12 +1,12 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Uneca\Chimera\Http\Requests\AnnouncementRequest;
-use Uneca\Chimera\Models\Announcement;
-use Uneca\Chimera\Models\User;
-use Uneca\Chimera\Notifications\BroadcastMessageNotification;
+use Uneca\Scaffold\Http\Requests\AnnouncementRequest;
+use Uneca\Scaffold\Models\Announcement;
+use Uneca\Scaffold\Models\User;
+use Uneca\Scaffold\Notifications\BroadcastMessageNotification;
 use Illuminate\Support\Facades\Notification;
 use Spatie\Permission\Models\Role;
 
@@ -14,8 +14,8 @@ class AnnouncementController extends Controller
 {
     public function index()
     {
-        $records = Announcement::paginate(config('chimera.records_per_page'));
-        return view('chimera::announcement.index', compact('records'));
+        $records = Announcement::paginate(config('scaffold.records_per_page'));
+        return view('scaffold::announcement.index', compact('records'));
     }
 
     private function recipientsList()
@@ -30,7 +30,7 @@ class AnnouncementController extends Controller
     public function create()
     {
         $recipients = $this->recipientsList();
-        return view('chimera::announcement.create', compact('recipients'));
+        return view('scaffold::announcement.create', compact('recipients'));
     }
 
     public function store(AnnouncementRequest $request)

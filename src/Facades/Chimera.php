@@ -8,6 +8,6 @@ class Chimera extends Facade
 {
     protected static function getFacadeAccessor()
     {
-        return 'chimera';
+        return 'scaffold';
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Models;
+namespace Uneca\Scaffold\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Gate;
 use Spatie\Translatable\HasTranslations;
 
-class Questionnaire extends Model
+class Source extends Model
 {
     use HasFactory;
     use HasTranslations;
@@ -25,25 +25,9 @@ class Questionnaire extends Model
         return $this->morphMany(Analytics::class, 'analyzable')->orderBy('completed_at');
     }
 
-    public function getScorecardsAttribute()
-    {
-        return Scorecard::published()
-            ->whereQuestionnaire($this->name)
-            ->orderBy('rank')
-            ->get()
-            ->filter(function ($scorecard) {
-                return Gate::allows($scorecard->permission_name);
-            });
-    }
-
     public function scopeActive($query)
     {
         return $query->where('connection_active', true);
-    }
-
-    public function scopeShowOnHomePage($query)
-    {
-        return $query->where('show_on_home_page', true);
     }
 
     private function testCanConnect()

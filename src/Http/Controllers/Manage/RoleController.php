@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -12,7 +12,7 @@ class RoleController extends Controller
     public function index()
     {
         $records = Role::with('permissions')->get();
-        return view('chimera::role.index', compact('records'));
+        return view('scaffold::role.index', compact('records'));
     }
 
     public function store(Request $request)
@@ -35,7 +35,7 @@ class RoleController extends Controller
         if ($role->name === 'Super Admin') {
             abort(403, 'Unauthorized action');
         }
-        return view('chimera::role.manage', compact('role'));
+        return view('scaffold::role.manage', compact('role'));
     }
 
     public function destroy(Role $role)

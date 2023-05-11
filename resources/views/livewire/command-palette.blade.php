@@ -77,7 +77,6 @@
                     <p class="mt-4 font-semibold text-gray-900">Searching...</p>
                     <p class="mt-2 text-gray-500">Hold on while we search that for you.</p>
                 </div>
-
                 @if ($results->isEmpty())
                     <!-- Empty state, show/hide based on command palette state -->
                     <div class="py-14 px-6 text-center text-sm sm:px-14" wire:loading.remove>
@@ -93,13 +92,13 @@
                     @foreach($results as $result)
                         <!-- Active: "bg-gray-100" -->
                         <li wire:key="result-{{ $result->id }}" class="group flex cursor-default select-none rounded-xl p-3" role="option" tabindex="-1" :class="active === {{$loop->index}} ? 'bg-gray-100' : ''">
-                            <a class="group flex" href="/indicator/{{ $result->slug }}" x-on:click.stop>
+                            <a class="group flex" href="/indicator/{{ $result->id }}" x-on:click.stop>
                                 {{--<div class="flex h-10 w-10 flex-none items-center justify-center rounded-lg bg-indigo-100">
                                     <x-dynamic-component component="icon.line-chart" class="mt-4" />
                                 </div>--}}
                                 <div class="ml-2 flex-auto">
                                     <p class="text-sm font-medium" :class="active === {{$loop->index}} ? 'text-gray-900' : 'text-gray-700'">{{ $result->title }}</p>
-                                    <p class="text-sm text-gray-500" :class="active === {{$loop->index}} ? 'text-gray-700' : 'text-gray-500'">{{ $result->description }}</p>
+                                    <p class="text-sm text-gray-500" :class="active === {{$loop->index}} ? 'text-gray-700' : 'text-gray-500'">{{ $result->body }}</p>
                                 </div>
                             </a>
                         </li>

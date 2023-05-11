@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Services;
+namespace Uneca\Scaffold\Services;
 
-use Uneca\Chimera\Models\Area;
-use Uneca\Chimera\Models\AreaHierarchy;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Models\AreaHierarchy;
 
 class AreaTree
 {

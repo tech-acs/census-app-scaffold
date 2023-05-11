@@ -4,7 +4,7 @@
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <link rel="icon" href="{{asset('images/favicon.ico', config('chimera.secure'))}}" />
+        <link rel="icon" href="{{asset('images/favicon.ico', config('scaffold.secure'))}}" />
 
         <title>{{ config('app.name') }}</title>
 
@@ -20,7 +20,7 @@
         @stack('scripts')
     </head>
     <body class="font-sans antialiased">
-        <x-jet-banner />
+        <x-banner />
 
         <div class="flex flex-col min-h-screen">
             @livewire('navigation-menu')
@@ -74,19 +74,19 @@
                                     </svg>
                                 </a>
                             </div>
-                            <div>
+                            {{--<div>
                                 <a href="https://tech-acs.github.io/chimera-docs/" class="text-gray-400 hover:text-gray-500" target="_blank" title="Documentation">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="w-6 h-6" viewBox="0 0 24 24" stroke-width="3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
                                         <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
                                         <path d="M3 19a9 9 0 0 1 9 0a9 9 0 0 1 9 0m-18 -13a9 9 0 0 1 9 0a9 9 0 0 1 9 0m-18 0l0 13m9 -13l0 13m9 -13l0 13"></path>
                                     </svg>
                                 </a>
-                            </div>
+                            </div>--}}
                         </div>
 
                     </div>
                     <div class="mt-2 md:mt-0 text-center text-base text-gray-400 flex">
-                        <div>{{ __('Owned by') }}&nbsp;<a href="{{ config('chimera.owner.url') }}" target="_blank" class="text-blue-400">{{ config('chimera.owner.name') }}</a></div>
+                        <div>{{ __('Owned by') }}&nbsp;<a href="{{ config('scaffold.owner.url') }}" target="_blank" class="text-blue-400">{{ config('scaffold.owner.name') }}</a></div>
                     </div>
                 </div>
             </footer>

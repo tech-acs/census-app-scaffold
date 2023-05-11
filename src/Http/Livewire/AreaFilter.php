@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Services\AreaTree;
-use Uneca\Chimera\Traits\ChecksumSafetyTrait;
+use Uneca\Scaffold\Services\AreaTree;
+use Uneca\Scaffold\Traits\ChecksumSafetyTrait;
 use Livewire\Component;
 
 class AreaFilter extends Component
@@ -87,6 +87,6 @@ class AreaFilter extends Component
 
     public function render()
     {
-        return view('chimera::livewire.area-filter');
+        return view('scaffold::livewire.area-filter');
     }
 }

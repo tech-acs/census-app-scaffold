@@ -1,11 +1,11 @@
 <?php
 
-namespace Uneca\Chimera\Jobs;
+namespace Uneca\Scaffold\Jobs;
 
-use Uneca\Chimera\Mail\InvitationMail;
-use Uneca\Chimera\Models\Invitation;
-use Uneca\Chimera\Notifications\TaskCompletedNotification;
-use Uneca\Chimera\Notifications\TaskFailedNotification;
+use Uneca\Scaffold\Mail\InvitationMail;
+use Uneca\Scaffold\Models\Invitation;
+use Uneca\Scaffold\Notifications\TaskCompletedNotification;
+use Uneca\Scaffold\Notifications\TaskFailedNotification;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -31,7 +31,7 @@ class BulkInvitationJob implements ShouldQueue
 
     public function handle()
     {
-        $expiresAt = now()->addHours(config('chimera.invitation.ttl_hours'));
+        $expiresAt = now()->addHours(config('scaffold.invitation.ttl_hours'));
         $totalCount = 0;
         $successCount = 0;
         SimpleExcelReader::create($this->filePath)->getRows()

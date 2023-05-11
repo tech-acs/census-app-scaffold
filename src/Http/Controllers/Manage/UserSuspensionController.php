@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Uneca\Chimera\Models\User;
+use Uneca\Scaffold\Models\User;
 
 class UserSuspensionController extends Controller
 {

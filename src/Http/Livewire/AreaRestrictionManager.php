@@ -1,11 +1,11 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Models\AreaRestriction;
-use Uneca\Chimera\Models\User;
-use Uneca\Chimera\Services\AreaTree;
-use Uneca\Chimera\Traits\ChecksumSafetyTrait;
+use Uneca\Scaffold\Models\AreaRestriction;
+use Uneca\Scaffold\Models\User;
+use Uneca\Scaffold\Services\AreaTree;
+use Uneca\Scaffold\Traits\ChecksumSafetyTrait;
 use Illuminate\Support\Collection;
 use Livewire\Component;
 
@@ -49,6 +49,6 @@ class AreaRestrictionManager extends AreaFilter
 
     public function render()
     {
-        return view('chimera::livewire.area-restriction-manager');
+        return view('scaffold::livewire.area-restriction-manager');
     }
 }

@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
 use Livewire\Component;
 
@@ -25,6 +25,6 @@ class NotificationInbox extends Component
 
     public function render()
     {
-        return view('chimera::livewire.notification-inbox');
+        return view('scaffold::livewire.notification-inbox');
     }
 }

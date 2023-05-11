@@ -1,11 +1,11 @@
 <?php
 
-namespace Uneca\Chimera\Http\Requests;
+namespace Uneca\Scaffold\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 
-class IndicatorRequest extends FormRequest
+class SourceRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -25,8 +25,14 @@ class IndicatorRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => ['required', Rule::unique('sources', 'name')->ignore($this->source)],
             'title' => 'required',
-            'description' => 'required',
+            'driver' => 'required',
+            'host' => 'required',
+            'port' => 'required',
+            'database' => 'required',
+            'username' => 'required',
+            'password' => 'required'
         ];
     }
 }

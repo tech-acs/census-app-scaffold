@@ -1,13 +1,13 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Models\MapIndicator;
-use Uneca\Chimera\Models\Page;
-use Uneca\Chimera\Models\Report;
+use Uneca\Scaffold\Models\MapIndicator;
+use Uneca\Scaffold\Models\Page;
+use Uneca\Scaffold\Models\Report;
 use Livewire\Component;
 use Spatie\Permission\Models\Permission;
-use Uneca\Chimera\Models\Scorecard;
+use Uneca\Scaffold\Models\Scorecard;
 
 class RoleManager extends Component
 {
@@ -116,6 +116,6 @@ class RoleManager extends Component
 
     public function render()
     {
-        return view('chimera::livewire.role-manager');
+        return view('scaffold::livewire.role-manager');
     }
 }

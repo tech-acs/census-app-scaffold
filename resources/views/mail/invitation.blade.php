@@ -10,7 +10,7 @@ Register
 
 *The account is exclusively for your official use. DO NOT share your login details with anyone.
 
-This invitation will expire in {{ config('chimera.invitation.ttl_hours') }} hours ({{$invitation->expires_at->toDayDateTimeString()}}).
+This invitation will expire in {{ config('scaffold.invitation.ttl_hours') }} hours ({{$invitation->expires_at->toDayDateTimeString()}}).
 Please make sure you register before then as the link will not work after that.*
 
 Best regards,<br>

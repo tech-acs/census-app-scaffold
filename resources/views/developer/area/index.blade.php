@@ -13,7 +13,7 @@
         <div class="flex justify-between">
             <div>
                 <form method="get" action="{{ route('developer.area.index') }}">
-                    <x-jet-input type="search" name="search" placeholder="Search name or code" value="{{request('search')}}" />
+                    <x-input type="search" name="search" placeholder="Search name or code" value="{{request('search')}}" />
                 </form>
             </div>
             <div class="flex items-center">
@@ -22,11 +22,11 @@
                 </div>
                 @if(app()->environment('local'))
                     <div x-data="confirmedDeletion">
-                        <a href="{{route('developer.area.create')}}"><x-jet-button>{{ __('Import') }}</x-jet-button></a>
+                        <a href="{{route('developer.area.create')}}"><x-button>{{ __('Import') }}</x-button></a>
 
-                        <x-chimera::delete-confirmation />
+                        <x-scaffold::delete-confirmation />
                         <a href="{{route('developer.area.destroy')}}" x-on:click.prevent="confirmThenDelete($el)">
-                            <x-jet-danger-button class="ml-2">{{ __('Delete All') }}</x-jet-danger-button>
+                            <x-danger-button class="ml-2">{{ __('Delete All') }}</x-danger-button>
                         </a>
                     </div>
                 @endif
@@ -110,7 +110,7 @@
                                     {{$record->path}}
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500 text-red text-center">
-                                    <x-chimera::yes-no value="{{$record->geom}}" />
+                                    <x-scaffold::yes-no value="{{$record->geom}}" />
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
                                     <a href="{{route('developer.area.edit', $record->id)}}" class="text-indigo-600 hover:text-indigo-900">{{ __('Edit') }}</a>

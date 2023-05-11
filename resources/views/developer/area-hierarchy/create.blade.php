@@ -30,7 +30,7 @@
 
         <form action="{{route('developer.area-hierarchy.store')}}" method="POST">
             @csrf
-            @include('chimera::developer.area-hierarchy.form')
+            @include('scaffold::developer.area-hierarchy.form')
         </form>
 
     </div>

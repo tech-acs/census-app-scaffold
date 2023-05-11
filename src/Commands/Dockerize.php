@@ -1,18 +1,16 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
 use Illuminate\Support\Collection;
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
 
-
 class Dockerize extends Command
 {
-    protected $signature = 'chimera:dockerize
-                 {--with= : The services that should be included in the installation}
-                 ';
+    protected $signature = 'scaffold:dockerize
+                 {--with= : The services that should be included in the installation}';
     protected $dirStubs = __DIR__ .'/../../docker/stub/';
 
 

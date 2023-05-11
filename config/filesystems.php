@@ -36,7 +36,7 @@ return [
             'throw' => false,
         ],
 
-        'indicator_templates' => [
+        /*'indicator_templates' => [
             'driver' => 'local',
             'root' => storage_path('app/indicator_templates'),
             'visibility' => 'private',
@@ -49,7 +49,7 @@ return [
             'url' => config('app.url') . '/reports',
             'visibility' => 'public',
             'throw' => false,
-        ],
+        ],*/
 
         'imports' => [
             'driver' => 'local',

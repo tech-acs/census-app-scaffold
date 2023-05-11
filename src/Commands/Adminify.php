@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
-use Uneca\Chimera\Models\User;
+use Uneca\Scaffold\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;

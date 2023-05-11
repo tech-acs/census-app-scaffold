@@ -1,15 +1,15 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Notification;
-use Uneca\Chimera\Jobs\ImportAreaSpreadsheetJob;
-use Uneca\Chimera\Models\Area;
-use Uneca\Chimera\Models\AreaHierarchy;
-use Uneca\Chimera\Notifications\TaskCompletedNotification;
-use Uneca\Chimera\Notifications\TaskFailedNotification;
-use Uneca\Chimera\Services\AreaTree;
+use Uneca\Scaffold\Jobs\ImportAreaSpreadsheetJob;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Models\AreaHierarchy;
+use Uneca\Scaffold\Notifications\TaskCompletedNotification;
+use Uneca\Scaffold\Notifications\TaskFailedNotification;
+use Uneca\Scaffold\Services\AreaTree;
 use Illuminate\Support\Arr;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
@@ -148,6 +148,6 @@ class AreaSpreadsheetImporter extends Component
 
     public function render()
     {
-        return view('chimera::livewire.area-spreadsheet-importer');
+        return view('scaffold::livewire.area-spreadsheet-importer');
     }
 }

@@ -1,12 +1,13 @@
 <?php
 
-namespace Uneca\Chimera\Rules;
+namespace Uneca\Scaffold\Rules;
 
-use Illuminate\Contracts\Validation\InvokableRule;
+use Closure;
+use Illuminate\Contracts\Validation\ValidationRule;
 
-class ValidShapefileSet implements InvokableRule
+class ValidShapefileSet implements ValidationRule
 {
-    public function __invoke($attribute, $value, $fail)
+    public function validate(string $attribute, mixed $value, Closure $fail): void
     {
         if (count($value) < 3) {
             $fail('All three shapefile component files are required');

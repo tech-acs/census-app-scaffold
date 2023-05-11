@@ -1,27 +1,27 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
-use Uneca\Chimera\Traits\InstallUpdateTrait;
+use Uneca\Scaffold\Traits\InstallUpdateTrait;
 
-class Chimera extends Command
+class Scaffold extends Command
 {
-    public $signature = 'chimera:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
+    public $signature = 'scaffold:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
-    public $description = 'Install the Dashboard Starter Kit into your newly created Laravel application';
+    public $description = 'Install the scaffold into your newly created Laravel application';
 
     use InstallUpdateTrait;
 
     public function handle(): int
     {
-        $this->installJetstream();
+        $this->callSilent('jetstream:install', ['stack' => 'livewire']);
         $this->comment('Installed Jetstream');
 
-        $this->callSilent('vendor:publish', ['--tag' => 'chimera-config', '--force' => true]);
-        $this->callSilent('vendor:publish', ['--tag' => 'chimera-migrations', '--force' => true]);
-        $this->comment('Published chimera config and migrations');
+        $this->callSilent('vendor:publish', ['--tag' => 'scaffold-config', '--force' => true]);
+        $this->callSilent('vendor:publish', ['--tag' => 'scaffold-migrations', '--force' => true]);
+        $this->comment('Published scaffold config and migrations');
 
         $this->requireComposerPackages($this->requiredComposerPackages);
 
@@ -36,9 +36,6 @@ class Chimera extends Command
 
         $this->publishResources();
         $this->comment('Published resources (js, css, public images, tailwind.config.js and vite.config.js)');
-
-        $this->callSilent('vendor:publish', ['--tag' => 'chimera-stubs']);
-        $this->comment('Published stubs');
 
         $this->callSilent('vendor:publish', ['--tag' => 'livewire:config']);
         $this->comment('Published livewire config');

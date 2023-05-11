@@ -31,7 +31,7 @@
         <form action="{{route('developer.area-hierarchy.update', $areaHierarchy->id)}}" method="POST">
             @csrf
             @method('PATCH')
-            @include('chimera::developer.area-hierarchy.form')
+            @include('scaffold::developer.area-hierarchy.form')
         </form>
 
     </div>

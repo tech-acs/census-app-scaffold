@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
 
@@ -10,15 +10,14 @@ use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Mail;
 use Redis;
 use Symfony\Component\Process\Process;
-use Uneca\Chimera\Models\Area;
-use Uneca\Chimera\Models\AreaHierarchy;
-use Uneca\Chimera\Models\Questionnaire;
-use Uneca\Chimera\Models\ReferenceValue;
-use Uneca\Chimera\Models\User;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Models\AreaHierarchy;
+use Uneca\Scaffold\Models\Source;
+use Uneca\Scaffold\Models\User;
 
 class Production extends Command
 {
-    protected $signature = 'chimera:production-checklist';
+    protected $signature = 'scaffold:production-checklist';
 
     protected $description = 'In production, run a checklist of critical settings';
 
@@ -37,9 +36,9 @@ class Production extends Command
                 }, true);
         });
 
-        $this->components->task('Check foundational data presence (area hierarchies, areas and reference values)', function () {
+        $this->components->task('Check foundational data presence (area hierarchies and areas)', function () {
             try {
-                $counts = [AreaHierarchy::count(), Area::count(), ReferenceValue::count()];
+                $counts = [AreaHierarchy::count(), Area::count()];
                 return collect($counts)
                     ->reduce(function ($carry, $item) {
                         return $carry && ($item > 0);
@@ -51,7 +50,7 @@ class Production extends Command
 
         $this->components->task('Check caching is functional and enabled (CACHE_DRIVER=redis, redis is reachable & CACHE_ENABLED=true)', function () {
             try {
-                $productionEnvValues = ['cache.default' => 'redis', 'chimera.cache.enabled' => true];
+                $productionEnvValues = ['cache.default' => 'redis', 'scaffold.cache.enabled' => true];
                 $redis = new Redis();
                 $redis->connect(config('database.redis.cache.host'), config('database.redis.cache.port'));
                 $username = config('database.redis.cache.username');
@@ -75,7 +74,7 @@ class Production extends Command
 
         $this->components->task('Check source databases are configured and reachable', function () {
             try {
-                $connections = Questionnaire::active()->pluck('name');
+                $connections = Source::active()->pluck('name');
                 if ($connections->isEmpty()) {
                     return false;
                 }
@@ -124,7 +123,7 @@ class Production extends Command
         });
 
         $this->components->task('Check dashboard is running in secure/https mode (SECURE=true)', function () {
-            return config('chimera.secure');
+            return config('scaffold.secure');
         });
 
         $this->components->task('Check storage and bootstrap/cache folders are writable', function () {

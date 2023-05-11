@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Services;
+namespace Uneca\Scaffold\Services;
 
 use Exception;
 use Illuminate\Support\Facades\DB;

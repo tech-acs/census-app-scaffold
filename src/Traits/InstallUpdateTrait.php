@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Traits;
+namespace Uneca\Scaffold\Traits;
 
 use Illuminate\Filesystem\Filesystem;
 use Illuminate\Support\Facades\File;
@@ -11,21 +11,21 @@ trait InstallUpdateTrait
     public array $requiredComposerPackages = [
         'ext-zip:*',
         'ext-pgsql:*',
-        'spatie/laravel-permission:^5.7',
-        'spatie/simple-excel:^3.0',
-        'spatie/laravel-translatable:^6.1',
+        'spatie/laravel-permission:^5.10',
+        'spatie/simple-excel:^3.2',
+        'spatie/laravel-translatable:^6.5',
         'spatie/db-dumper:^3.3',
         'gasparesganga/php-shapefile:^3.4'
     ];
 
     public array $requiredNodePackages = [
-        "leaflet" => "^1.9.3",
-        "plotly.js-basic-dist-min" => "^2.17.1",
-        "plotly.js-locales" => "^2.17.1",
-        "@alpinejs/focus" => "3.10.5",
-        "@tailwindcss/line-clamp" => "^0.4.2",
-        "@tailwindcss/aspect-ratio" => "^0.4.2",
-        "lodash" => "^4.17.21",
+        "leaflet" => "^1.9",
+        "plotly.js-basic-dist-min" => "^2.22",
+        "plotly.js-locales" => "^2.22",
+        "@alpinejs/focus" => "3.12",
+        "@tailwindcss/line-clamp" => "^0.4",
+        "@tailwindcss/aspect-ratio" => "^0.4",
+        "lodash" => "^4.17",
     ];
 
     private function copyFilesInDir(string $srcDir, string $destDir, string $fileType = '*.php')
@@ -95,12 +95,6 @@ trait InstallUpdateTrait
         file_put_contents($path, str_replace($search, $replace, file_get_contents($path)));
     }
 
-    private function installJetstream()
-    {
-        $this->callSilent('jetstream:install', ['stack' => 'livewire']);
-        $this->callSilent('vendor:publish', ['--tag' => 'jetstream-views']);
-    }
-
     private function copyJetstreamModifications()
     {
         $this->copyFilesInDir(__DIR__ . '/../../deploy/jetstream-modifications/actions', app_path('Actions/Fortify'));
@@ -117,10 +111,8 @@ trait InstallUpdateTrait
     {
         $this->copyFilesInDir(__DIR__ . '/../../deploy/resources/css', resource_path('css'), '*.css');
         $this->copyFilesInDir(__DIR__ . '/../../deploy/resources/js', resource_path('js'), '*.js');
-        File::copyDirectory(__DIR__ . '/../../deploy/resources/stubs', resource_path('stubs'));
 
         $this->copyFilesInDir(__DIR__ . '/../../deploy/assets/images', public_path('images'), '*.*');
-        File::copyDirectory(__DIR__ . '/../../deploy/assets/images/graphical-menu', public_path('images/graphical-menu'));
 
         copy(__DIR__.'/../../deploy/npm/tailwind.config.js', base_path('tailwind.config.js'));
         copy(__DIR__.'/../../deploy/npm/vite.config.js', base_path('vite.config.js'));
@@ -137,6 +129,6 @@ trait InstallUpdateTrait
         $this->replaceInFile("'timezone' => 'UTC'", "'timezone' => env('APP_TIMEZONE', 'UTC')", config_path('app.php'));
 
         // Set the User model to be used
-        $this->replaceInFile("'model' => App\Models\User::class", "'model' => Uneca\Chimera\Models\User::class", config_path('auth.php'));
+        $this->replaceInFile("'model' => App\Models\User::class", "'model' => Uneca\Scaffold\Models\User::class", config_path('auth.php'));
     }
 }

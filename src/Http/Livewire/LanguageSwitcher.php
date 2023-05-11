@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
 use Illuminate\Support\Facades\App;
 use Illuminate\Support\Facades\Cookie;
@@ -29,6 +29,6 @@ class LanguageSwitcher extends Component
 
     public function render()
     {
-        return view('chimera::livewire.language-switcher');
+        return view('scaffold::livewire.language-switcher');
     }
 }

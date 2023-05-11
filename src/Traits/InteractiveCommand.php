@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Traits;
+namespace Uneca\Scaffold\Traits;
 
 use Illuminate\Support\Facades\Validator;
 

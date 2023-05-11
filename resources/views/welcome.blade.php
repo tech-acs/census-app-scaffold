@@ -19,11 +19,12 @@
             <div class="flex justify-between items-center py-6 md:justify-start md:space-x-10">
                 <div class="flex justify-start lg:w-0 lg:flex-1">
                     <a href="#">
-                        <x-jet-application-mark class="block h-10 w-auto" />
+                        <application-mark class="block h-10 w-auto" />
                     </a>
                 </div>
 
                 <div class="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
+
                     @auth
                         <a href="{{ url('/home') }}" class="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900">
                             {{ __('Home') }}
@@ -58,7 +59,7 @@
             </div>
         </div>
         <div class="relative w-full h-64 sm:h-72 md:h-96 lg:absolute lg:inset-y-0 lg:right-0 lg:w-1/2 lg:h-full">
-            <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('images/hero.jpg', config('chimera.secure')) }}" alt="">
+            <img class="absolute inset-0 w-full h-full object-cover" src="{{ asset('images/hero.jpg', config('scaffold.secure')) }}" alt="">
         </div>
     </main>
 
@@ -100,7 +101,7 @@
                 </div>
             </div>
             <div class="mt-2 md:mt-0 text-center text-base text-gray-400 flex">
-                <div>{{ __('Owned by') }}&nbsp;<a href="{{ config('chimera.owner.url') }}" target="_blank" class="text-blue-400">{{ config('chimera.owner.name') }}</a></div>
+                <div>{{ __('Owned by') }}&nbsp;<a href="{{ config('scaffold.owner.url') }}" target="_blank" class="text-blue-400">{{ config('scaffold.owner.name') }}</a></div>
             </div>
         </div>
     </footer>

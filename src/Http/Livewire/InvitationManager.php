@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Mail\InvitationMail;
-use Uneca\Chimera\Models\Invitation;
+use Uneca\Scaffold\Mail\InvitationMail;
+use Uneca\Scaffold\Models\Invitation;
 use Exception;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\URL;
@@ -28,7 +28,7 @@ class InvitationManager extends Component
     public $resultBody;
 
     protected $rules = [
-        'email' => 'required|email|unique:Uneca\Chimera\Models\Invitation,email|unique:Uneca\Chimera\Models\User,email',
+        'email' => 'required|email|unique:Uneca\Scaffold\Models\Invitation,email|unique:Uneca\Scaffold\Models\User,email',
     ];
 
     protected $messages = [
@@ -59,7 +59,7 @@ class InvitationManager extends Component
     {
         $this->validate();
         try {
-            $expiresAt = now()->addHours(config('chimera.invitation.ttl_hours'));
+            $expiresAt = now()->addHours(config('scaffold.invitation.ttl_hours'));
             $invitation = Invitation::create([
                 'email' => $this->email,
                 'link' => URL::temporarySignedRoute('register', $expiresAt, ['email' => $this->email]),
@@ -115,6 +115,6 @@ class InvitationManager extends Component
 
     public function render()
     {
-        return view('chimera::livewire.invitation-manager');
+        return view('scaffold::livewire.invitation-manager');
     }
 }

@@ -1,9 +1,9 @@
 <?php
 
-namespace Uneca\Chimera\Models;
+namespace Uneca\Scaffold\Models;
 
 use Spatie\Permission\Traits\HasRoles;
-use Uneca\Chimera\Services\AreaTree;
+use Uneca\Scaffold\Services\AreaTree;
 
 class User extends \App\Models\User
 {

@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Requests;
+namespace Uneca\Scaffold\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 

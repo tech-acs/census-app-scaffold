@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Traits;
+namespace Uneca\Scaffold\Traits;
 
-use Uneca\Chimera\Models\Area;
+use Uneca\Scaffold\Models\Area;
 
 trait Geospatial
 {

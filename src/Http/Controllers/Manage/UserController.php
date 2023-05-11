@@ -1,10 +1,10 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Uneca\Chimera\Models\Invitation;
-use Uneca\Chimera\Models\User;
+use Uneca\Scaffold\Models\Invitation;
+use Uneca\Scaffold\Models\User;
 use Illuminate\Http\Request;
 use Spatie\Permission\Models\Role;
 
@@ -20,14 +20,14 @@ class UserController extends Controller
                     ->orWhere('email', 'ilike', "$search%");
             })
             ->orderBy($sortColumn)
-            ->paginate(config('chimera.records_per_page'));
-        return view('chimera::user.index', ['records' => $records, 'users_count' => User::count(), 'invitations_count' => Invitation::count()]);
+            ->paginate(config('scaffold.records_per_page'));
+        return view('scaffold::user.index', ['records' => $records, 'users_count' => User::count(), 'invitations_count' => Invitation::count()]);
     }
 
     public function edit(User $user)
     {
         $roles = Role::all();
-        return view('chimera::user.manage', compact('user', 'roles'));
+        return view('scaffold::user.manage', compact('user', 'roles'));
     }
 
     public function update(User $user, Request $request)

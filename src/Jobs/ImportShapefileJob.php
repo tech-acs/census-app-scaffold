@@ -1,15 +1,15 @@
 <?php
 
-namespace Uneca\Chimera\Jobs;
+namespace Uneca\Scaffold\Jobs;
 
 use Illuminate\Support\Str;
-use Uneca\Chimera\Models\Area;
-use Uneca\Chimera\Models\AreaHierarchy;
-use Uneca\Chimera\Notifications\TaskCompletedNotification;
-use Uneca\Chimera\Notifications\TaskFailedNotification;
-use Uneca\Chimera\Services\AreaTree;
-use Uneca\Chimera\Services\ShapefileImporter;
-use Uneca\Chimera\Traits\Geospatial;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Models\AreaHierarchy;
+use Uneca\Scaffold\Notifications\TaskCompletedNotification;
+use Uneca\Scaffold\Notifications\TaskFailedNotification;
+use Uneca\Scaffold\Services\AreaTree;
+use Uneca\Scaffold\Services\ShapefileImporter;
+use Uneca\Scaffold\Traits\Geospatial;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldBeUnique;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -103,7 +103,7 @@ class ImportShapefileJob implements ShouldQueue
 
         // Check that there are no "orphan" areas
         $orphanFeatures = array_filter($augmentedFeatures, fn ($feature) => empty($feature['path']));
-        if (! config('chimera.area.map.ignore_orphan_areas') && ! empty($orphanFeatures)) {
+        if (! config('scaffold.area.map.ignore_orphan_areas') && ! empty($orphanFeatures)) {
             $orphans = collect($orphanFeatures)->pluck('attribs.code')->join(', ', ' and ');
             throw ValidationException::withMessages([
                 'shapefile' => [count($orphanFeatures) . " orphan area(s) found [code: $orphans]. All areas require a containing parent area."],

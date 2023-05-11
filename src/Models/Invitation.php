@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Models;
+namespace Uneca\Scaffold\Models;
 
 use Carbon\Carbon;
 use Carbon\CarbonInterface;

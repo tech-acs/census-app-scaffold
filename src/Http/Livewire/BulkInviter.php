@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Jobs\BulkInvitationJob;
+use Uneca\Scaffold\Jobs\BulkInvitationJob;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use Illuminate\Validation\ValidationException;
@@ -67,6 +67,6 @@ class BulkInviter extends Component
 
     public function render()
     {
-        return view('chimera::livewire.bulk-inviter');
+        return view('scaffold::livewire.bulk-inviter');
     }
 }

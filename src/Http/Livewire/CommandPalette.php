@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Http\Livewire;
+namespace Uneca\Scaffold\Http\Livewire;
 
-use Uneca\Chimera\Models\Indicator;
+use Uneca\Scaffold\Models\Indicator;
 use Illuminate\Support\Facades\Gate;
 use Livewire\Component;
 
@@ -37,6 +37,6 @@ class CommandPalette extends Component
         }
         $this->resultCount = $results->count();
         $this->activeResult = 0;
-        return view('chimera::livewire.command-palette', compact('results'));
+        return view('scaffold::livewire.command-palette', compact('results'));
     }
 }

@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Traits;
+namespace Uneca\Scaffold\Traits;
 
-use Uneca\Chimera\Services\AreaTree;
+use Uneca\Scaffold\Services\AreaTree;
 
 trait FilterBasedAxisTitle
 {

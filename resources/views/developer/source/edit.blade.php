@@ -52,28 +52,18 @@
                         >
                             Basics
                         </a>
-                        {{--<a
-                            @click="select('mapper')"
-                            :class="isSelected('mapper') ? 'border-indigo-500 text-indigo-600' : 'border-transparent text-gray-500 hover:text-gray-700 hover:border-gray-200'"
-                            class="cursor-pointer border-transparent text-gray-500 whitespace-nowrap flex py-4 px-1 border-b-2 font-medium text-sm"
-                        >
-                            Area Columns Mapper
-                        </a>--}}
                     </nav>
                 </div>
             </div>
 
             <div class="pt-6">
                 <section id="basics" x-show="isSelected('basics')">
-                    <form action="{{route('developer.questionnaire.update', $questionnaire->id)}}" method="POST">
+                    <form action="{{route('developer.source.update', $source->id)}}" method="POST">
                         @csrf
                         @method('PATCH')
-                        @include('chimera::developer.questionnaire.form')
+                        @include('scaffold::developer.source.form')
                     </form>
                 </section>
-                {{--<section id="mapper" x-show="isSelected('mapper')">
-                    <livewire:column-mapper />
-                </section>--}}
             </div>
         </div>
     </div>

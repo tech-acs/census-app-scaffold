@@ -1,13 +1,13 @@
 <?php
 
-namespace Uneca\Chimera\Http\Controllers\Manage;
+namespace Uneca\Scaffold\Http\Controllers\Manage;
 
 use App\Http\Controllers\Controller;
-use Uneca\Chimera\Http\Requests\MapRequest;
-use Uneca\Chimera\Jobs\ImportShapefileJob;
-use Uneca\Chimera\Models\Area;
-use Uneca\Chimera\Services\AreaTree;
-use Uneca\Chimera\Traits\Geospatial;
+use Uneca\Scaffold\Http\Requests\MapRequest;
+use Uneca\Scaffold\Jobs\ImportShapefileJob;
+use Uneca\Scaffold\Models\Area;
+use Uneca\Scaffold\Services\AreaTree;
+use Uneca\Scaffold\Traits\Geospatial;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
@@ -27,19 +27,19 @@ class AreaController extends Controller
                 $query->whereRaw("name->>'{$locale}' ilike '{$search}%'")
                     ->orWhere('code', $search);
             })
-            ->paginate(config('chimera.records_per_page'));
+            ->paginate(config('scaffold.records_per_page'));
         $areaCounts = Area::select('level', DB::raw('count(*) AS count'))->groupBy('level')->get()->keyBy('level');
         $hierarchies = (new AreaTree())->hierarchies;
         $summary = collect($hierarchies)->map(function ($levelName, $level) use ($areaCounts) {
             return ($areaCounts[$level]?->count ?? 0) . ' ' . str($levelName)->plural();
         })->join(', ', ' and ');
-        return view('chimera::developer.area.index', compact('records', 'summary', 'hierarchies'));
+        return view('scaffold::developer.area.index', compact('records', 'summary', 'hierarchies'));
     }
 
     public function create()
     {
-        $levels = (new AreaTree)->hierarchies; //config('chimera.area.hierarchies', []);
-        return view('chimera::developer.area.create', ['levels' => array_map(fn ($level) => ucfirst($level), $levels)]);
+        $levels = (new AreaTree)->hierarchies;
+        return view('scaffold::developer.area.create', ['levels' => array_map(fn ($level) => ucfirst($level), $levels)]);
     }
 
     private function validateShapefile(array $features)
@@ -83,7 +83,7 @@ class AreaController extends Controller
 
     public function edit(Area $area)
     {
-        return view('chimera::developer.area.edit', compact('area'));
+        return view('scaffold::developer.area.edit', compact('area'));
     }
 
     public function update(Area $area, Request $request)

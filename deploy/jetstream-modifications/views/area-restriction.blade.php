@@ -1,10 +1,10 @@
-<x-jet-form-section submit="updateProfileInformation">
+<x-form-section submit="updateProfileInformation">
     <x-slot name="title">
         {{ __('Assigned Area') }}
     </x-slot>
 
     <x-slot name="description">
-        {{ __('This the area you have been assigned to. All data in your dashboard is scoped to this.') }}
+        {{ __('This is the area you have been assigned to. All data in the application will be scoped to this.') }}
     </x-slot>
 
     <x-slot name="form">
@@ -13,4 +13,4 @@
         </div>
     </x-slot>
 
-</x-jet-form-section>
+</x-form-section>

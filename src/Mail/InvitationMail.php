@@ -1,8 +1,8 @@
 <?php
 
-namespace Uneca\Chimera\Mail;
+namespace Uneca\Scaffold\Mail;
 
-use Uneca\Chimera\Models\Invitation;
+use Uneca\Scaffold\Models\Invitation;
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
@@ -17,7 +17,7 @@ class InvitationMail extends Mailable
     public function build()
     {
         return $this->subject(config('app.name') . ' registration invitation')
-            ->markdown('chimera::mail.invitation')
-            ->with(['ttl' => config('chimera.invitation.ttl_hours')]);
+            ->markdown('scaffold::mail.invitation')
+            ->with(['ttl' => config('scaffold.invitation.ttl_hours')]);
     }
 }

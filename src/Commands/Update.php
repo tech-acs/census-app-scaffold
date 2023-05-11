@@ -1,26 +1,26 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
-use Uneca\Chimera\Traits\InstallUpdateTrait;
+use Uneca\Scaffold\Traits\InstallUpdateTrait;
 
 class Update extends Command
 {
-    public $signature = 'chimera:update {--composer=global} {--chimera-config} {--migrations} {--packages} {--jetstream-modifications} {--buildables} {--stubs} {--other-configs} {--npm} {--copy-env}';
+    public $signature = 'scaffold:update {--composer=global} {--scaffold-config} {--migrations} {--packages} {--jetstream-modifications} {--buildables} {--stubs} {--other-configs} {--npm} {--copy-env}';
 
-    public $description = 'Update the Dashboard Starter Kit';
+    public $description = 'Update the scaffold';
 
     use InstallUpdateTrait;
 
     public function handle(): int
     {
-        if ($this->option('chimera-config')) {
-            $this->callSilent('vendor:publish', ['--tag' => 'chimera-config', '--force' => true]);
-            $this->comment('Published chimera config');
+        if ($this->option('scaffold-config')) {
+            $this->callSilent('vendor:publish', ['--tag' => 'scaffold-config', '--force' => true]);
+            $this->comment('Published scaffold config');
         }
         if ($this->option('migrations')) {
-            $this->callSilent('vendor:publish', ['--tag' => 'chimera-migrations', '--force' => true]);
+            $this->callSilent('vendor:publish', ['--tag' => 'scaffold-migrations', '--force' => true]);
             $this->comment('Published migrations');
         }
         if ($this->option('packages')) {
@@ -34,10 +34,6 @@ class Update extends Command
         if ($this->option('buildables')) {
             $this->publishResources();
             $this->comment('Published resources (js, css, public images, tailwind.config.js and vite.config.js)');
-        }
-        if ($this->option('stubs')) {
-            $this->callSilent('vendor:publish', ['--tag' => 'chimera-stubs']);
-            $this->comment('Published stubs');
         }
         if ($this->option('other-configs')) {
             $this->editConfigFiles();

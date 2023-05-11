@@ -1,13 +1,13 @@
 <?php
 
-namespace Uneca\Chimera\Commands;
+namespace Uneca\Scaffold\Commands;
 
 use Illuminate\Console\Command;
-use Uneca\Chimera\Models\Questionnaire;
+use Uneca\Scaffold\Models\Source;
 
 class DataExport extends Command
 {
-    protected $signature = 'chimera:data-export
+    protected $signature = 'scaffold:data-export
                             {--exclude-table=* : Tables to exclude from the export}';
 
     protected $description = 'Dump postgres data (from some tables) to file';
@@ -15,15 +15,8 @@ class DataExport extends Command
     protected array $tables = [
         'area_hierarchies',
         'areas',
-        'indicators',
-        'indicator_page',
-        'map_indicators',
-        'pages',
         'permissions', // ???
-        'questionnaires',
-        'reports',
-        'reference_values',
-        'scorecards',
+        'sources',
     ];
 
     public function handle()
@@ -57,7 +50,7 @@ class DataExport extends Command
             }
             $tmpFileHandle = fopen($tmpFile, 'r');
             $dumpFileHandle = fopen($dumpFile, 'w');
-            $databasePasswords = Questionnaire::pluck('password')->all();
+            $databasePasswords = Source::pluck('password')->all();
             while (($line = fgets($tmpFileHandle)) !== false) {
                 if (! empty(trim($line))) {
                     if (str_contains($line, 'INSERT INTO public.questionnaires')) {

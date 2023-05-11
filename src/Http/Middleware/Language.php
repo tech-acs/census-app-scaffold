@@ -1,6 +1,6 @@
 <?php
 
-namespace Uneca\Chimera\Http\Middleware;
+namespace Uneca\Scaffold\Http\Middleware;
 
 use Closure;
 use Illuminate\Support\Facades\App;
