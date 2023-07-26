@@ -28,16 +28,6 @@ class User extends \App\Models\User
         return $this->hasMany(Announcement::class);
     }
 
-    public function indicatorAnalytics()
-    {
-        return $this->hasMany(Analytics::class);
-    }
-
-    public function reports()
-    {
-        return $this->belongsToMany(Report::class)->withTimestamps();
-    }
-
     public function areaRestrictionAsFilter()
     {
         $areaTree = new AreaTree();
