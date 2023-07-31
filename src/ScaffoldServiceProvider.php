@@ -46,7 +46,7 @@ class ScaffoldServiceProvider extends PackageServiceProvider
             ->hasRoute('web')
             ->hasMigrations($migrations)
             ->hasCommands([
-                \Uneca\Scaffold\Commands\Scaffold::class,
+                \Uneca\Scaffold\Commands\Install::class,
                 \Uneca\Scaffold\Commands\DataExport::class,
                 \Uneca\Scaffold\Commands\DataImport::class,
                 \Uneca\Scaffold\Commands\Dockerize::class,
@@ -62,7 +62,7 @@ class ScaffoldServiceProvider extends PackageServiceProvider
         Livewire::component('area-restriction-manager', \Uneca\Scaffold\Http\Livewire\AreaRestrictionManager::class);
         Livewire::component('area-spreadsheet-importer', \Uneca\Scaffold\Http\Livewire\AreaSpreadsheetImporter::class);
         Livewire::component('bulk-inviter', \Uneca\Scaffold\Http\Livewire\BulkInviter::class);
-        Livewire::component('command-palette', \Uneca\Scaffold\Http\Livewire\CommandPalette::class);
+        //Livewire::component('command-palette', \Uneca\Scaffold\Http\Livewire\CommandPalette::class);
         Livewire::component('invitation-manager', \Uneca\Scaffold\Http\Livewire\InvitationManager::class);
         Livewire::component('language-switcher', \Uneca\Scaffold\Http\Livewire\LanguageSwitcher::class);
         Livewire::component('notification-bell', \Uneca\Scaffold\Http\Livewire\NotificationBell::class);
@@ -114,14 +114,11 @@ class ScaffoldServiceProvider extends PackageServiceProvider
         $router->pushMiddlewareToGroup('web', \Uneca\Scaffold\Http\Middleware\Language::class);
         $router->aliasMiddleware('enforce_2fa', \Uneca\Scaffold\Http\Middleware\RedirectIf2FAEnforced::class);
         $router->aliasMiddleware('log_page_views', \Uneca\Scaffold\Http\Middleware\LogPageView::class);
+
     }
 
-    public function register()
+    /*public function register()
     {
         parent::register();
-
-        /*$this->app->bind('helpers', function ($app) {
-            return new Helpers();
-        });*/
-    }
+    }*/
 }
