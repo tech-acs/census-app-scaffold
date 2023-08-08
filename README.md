@@ -17,7 +17,6 @@ and feel as it provides basic UI components.
 - Announcements (to role or everyone)
 - Area hierarchy definition
 - Areas (shapefile and csv import)
-- Pages
 - Usage stats
 - Notifications (with inbox)
 - Adminify command (for creating super user accounts)

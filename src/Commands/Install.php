@@ -6,7 +6,7 @@ use Illuminate\Console\Command;
 use Symfony\Component\Process\Process;
 use Uneca\Scaffold\Traits\InstallUpdateTrait;
 
-class Scaffold extends Command
+class Install extends Command
 {
     public $signature = 'scaffold:install {--composer=global : Absolute path to the Composer binary which should be used to install packages}';
 
@@ -14,8 +14,23 @@ class Scaffold extends Command
 
     use InstallUpdateTrait;
 
+    private function isScaffoldInstalled()
+    {
+        return file_exists(base_path('.scaffold'));
+    }
+
+    private function writeScaffoldInstallationLockfile()
+    {
+        return file_put_contents(base_path('.scaffold'), now()->toString());
+    }
+
     public function handle(): int
     {
+        if ($this->isScaffoldInstalled()) {
+            $this->warn('Census application scaffold already installed');
+            return self::SUCCESS;
+        }
+
         $this->callSilent('jetstream:install', ['stack' => 'livewire']);
         $this->comment('Installed Jetstream');
 
@@ -59,6 +74,8 @@ class Scaffold extends Command
         config(['app.key' => '']);
         $this->call('key:generate');
         $this->comment('Copied .env.example');
+
+        $this->writeScaffoldInstallationLockfile();
 
         $this->info('All done');
         $this->newLine();

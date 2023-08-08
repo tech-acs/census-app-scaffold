@@ -18,7 +18,7 @@ Route::get('/', function () {
 })->name('landing')->middleware('web');
 
 Route::middleware(['web', 'auth:sanctum', 'verified', 'log_page_views', 'enforce_2fa'])->group(function () {
-    //Route::get('home', HomeController::class)->name('home');
+    Route::get('home', HomeController::class)->name('home');
 
     Route::get('notification', NotificationController::class)->name('notification.index');
 

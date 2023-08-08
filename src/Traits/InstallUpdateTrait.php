@@ -23,7 +23,7 @@ trait InstallUpdateTrait
         "plotly.js-basic-dist-min" => "^2.22",
         "plotly.js-locales" => "^2.22",
         "@alpinejs/focus" => "3.12",
-        "@tailwindcss/line-clamp" => "^0.4",
+        //"@tailwindcss/line-clamp" => "^0.4",
         "@tailwindcss/aspect-ratio" => "^0.4",
         "lodash" => "^4.17",
     ];
