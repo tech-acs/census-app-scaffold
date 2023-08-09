@@ -62,7 +62,6 @@ class ScaffoldServiceProvider extends PackageServiceProvider
         Livewire::component('area-restriction-manager', \Uneca\Scaffold\Http\Livewire\AreaRestrictionManager::class);
         Livewire::component('area-spreadsheet-importer', \Uneca\Scaffold\Http\Livewire\AreaSpreadsheetImporter::class);
         Livewire::component('bulk-inviter', \Uneca\Scaffold\Http\Livewire\BulkInviter::class);
-        //Livewire::component('command-palette', \Uneca\Scaffold\Http\Livewire\CommandPalette::class);
         Livewire::component('invitation-manager', \Uneca\Scaffold\Http\Livewire\InvitationManager::class);
         Livewire::component('language-switcher', \Uneca\Scaffold\Http\Livewire\LanguageSwitcher::class);
         Livewire::component('notification-bell', \Uneca\Scaffold\Http\Livewire\NotificationBell::class);

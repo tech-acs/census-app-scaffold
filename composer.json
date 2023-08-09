@@ -20,9 +20,9 @@
         "ext-intl": "*",
         "ext-zip": "*",
         "ext-redis": "*",
-        "spatie/laravel-package-tools": "^1.9.2",
-        "laravel/jetstream": "3.2",
-        "livewire/livewire": "^2.0",
+        "spatie/laravel-package-tools": "^1.15",
+        "laravel/jetstream": "3.3",
+        "livewire/livewire": "^3.0",
         "spatie/laravel-translatable": "^6.5"
     },
     "require-dev": {
