@@ -21,7 +21,7 @@
         "ext-zip": "*",
         "ext-redis": "*",
         "spatie/laravel-package-tools": "^1.15",
-        "laravel/jetstream": "3.3",
+        "laravel/jetstream": "^4.0",
         "livewire/livewire": "^3.0",
         "spatie/laravel-translatable": "^6.5"
     },
