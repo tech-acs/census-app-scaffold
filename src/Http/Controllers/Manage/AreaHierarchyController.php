@@ -24,12 +24,16 @@ class AreaHierarchyController extends Controller
 
     public function store(AreaHierarchyRequest $request)
     {
-        AreaHierarchy::create([
-            'index' => AreaHierarchy::count(),
-            'name' => $request->get('name'),
-            'zero_pad_length' => $request->get('zero_pad_length'),
-            'simplification_tolerance' => $request->get('simplification_tolerance'),
-        ]);
+        try {
+            AreaHierarchy::create([
+                'index' => AreaHierarchy::count(),
+                'name' => $request->get('name'),
+                'zero_pad_length' => $request->get('zero_pad_length'),
+                'simplification_tolerance' => $request->get('simplification_tolerance'),
+            ]);
+        } catch (\Exception $e) {
+            return redirect()->route('developer.area-hierarchy.index')->withError('There was a problem creating the area hierarchy');
+        }
         return redirect()->route('developer.area-hierarchy.index')->withMessage('Area hierarchy created');
     }
 
