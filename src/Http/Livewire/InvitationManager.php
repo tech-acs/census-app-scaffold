@@ -69,7 +69,7 @@ class InvitationManager extends Component
             $this->loadData();
             $this->email = '';
             $this->role = '';
-            $this->emit('invited');
+            $this->dispatch('invited');
 
             if ($this->sendEmail) {
                 $this->sendEmail($invitation);
@@ -87,7 +87,7 @@ class InvitationManager extends Component
             'expires_at' => $expiresAt
         ]);
         $this->loadData();
-        $this->emit('renewed');
+        $this->dispatch('renewed');
     }
 
     private function loadData()
