@@ -40,7 +40,7 @@ class InvitationManager extends Component
         try {
             $this->sendEmail($invitation);
             $this->resultTitle = 'Email sent';
-            $this->resultBody = "The invitation email has been resent to {$this->email}";
+            $this->resultBody = "The invitation email has been resent to {$invitation->email}";
         } catch (\Exception $exception) {
             $this->resultTitle = 'Error occurred';
             $this->resultBody = "The invitation email was not sent. Please make sure mail sending has been properly configured. " .
@@ -96,7 +96,7 @@ class InvitationManager extends Component
         $this->roles = Role::where('name', '!=', 'Super Admin')->get();
     }
 
-    public function showLink(Invitation $invitation)
+    public function showLinkModal(Invitation $invitation)
     {
         $this->link = $invitation->link;
         $this->showLink = true;
